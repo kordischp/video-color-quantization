@@ -21,7 +21,7 @@ To use the programs, specify the parameters inside the code. By default it
 takes a video named 'vid1.mp4' and reduces the number of colors to 30. A sample
 video is provided in the repository for testing purposes.
 
-![alt text](images\image1.png)
+![alt text](images/image1.png)
 
 Running the program on a sample video gives the following results for 30 colors, where the first gif is the original video, the second is 
 from `video_quantize.py` and the third is from `video_quantize_pallete.py`.
