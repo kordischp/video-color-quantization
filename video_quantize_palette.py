@@ -21,7 +21,7 @@ import skimage
 from pathlib import Path
 import shutil
 
-def quantize_image(image, num_colors):
+def quantize_image(image):
     # Apply the palette to current frame
     pic2 = Image.open(image)
     pic2 = np.array(pic2, dtype=np.float64) / 255
@@ -39,7 +39,8 @@ def quantize_image(image, num_colors):
 # Settings
 num_colors = 30  # Number of colors to extract from palette and apply to the video
 video_path = 'vid1.mp4'
-output_path = 'vid1_quantized.mp4'
+output_path = 'vid1_quantized_.mp4'
+palette = 'palette.png' # Choose an image to be used as a palette
 
 # Open the video file and get properties
 cap = cv2.VideoCapture(video_path)
@@ -52,7 +53,7 @@ fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
 
 #extract colors from palette
-pic = Image.open('palette.png')
+pic = Image.open(palette)
 pic = np.array(pic, dtype=np.float64) / 255
 w, h, d = original_shape = tuple(pic.shape)
 assert d == 3
@@ -87,7 +88,7 @@ while cap.isOpened():
     cv2.imwrite(temp_image_path, frame)
 
     # Apply quantization to the frame and write the frame to the output video
-    quantized_frame = quantize_image(temp_image_path, num_colors)
+    quantized_frame = quantize_image(temp_image_path)
     out.write(quantized_frame)
 
 # Release the video capture and writer objects

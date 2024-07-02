@@ -24,7 +24,7 @@ import shutil
 def quantize_image(image, num_colors):
     pic = Image.open(image)
     pic = np.array(pic, dtype=np.float64) / 255
-    w, h, d = original_shape = tuple(pic.shape)
+    w, h, d = tuple(pic.shape)
     assert d == 3
     image_array = np.reshape(pic, (w * h, d))
 
@@ -44,7 +44,7 @@ def quantize_image(image, num_colors):
 # Settings
 num_colors = 30 # Number of colors for quantization
 video_path = 'vid1.mp4'
-output_path = 'vid1_quantized_.mp4'
+output_path = 'vid1_quantized.mp4'
 
 # Open the video file and get properties
 cap = cv2.VideoCapture(video_path)
