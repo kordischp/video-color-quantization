@@ -19,7 +19,7 @@ but palettes of colors used in pixel art give predictable results.
 ## Usage
 To use the programs, specify the parameters inside the code. By default it
 takes a video named 'vid1.mp4' and reduces the number of colors to 30. A sample
-video is provided in the repository for testing purposes.
+video and palette are provided in the repository for testing purposes.
 
 ![alt text](images/image1.png)
 
